@@ -3,6 +3,7 @@ import { BookInstanceService } from './book-instance.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { BookInstance } from './schemas/book-instance.schema';
 import { BooksModule } from 'src/books/books.module';
+import { BookInstanceController } from './book-instance.controller';
 
 @Module({
   imports: [
@@ -15,5 +16,6 @@ import { BooksModule } from 'src/books/books.module';
     BooksModule,
   ],
   providers: [BookInstanceService],
+  controllers: [BookInstanceController],
 })
 export class BookInstanceModule {}

@@ -10,11 +10,11 @@ export class BooksService {
   constructor(@InjectModel('Book') private readonly bookModel: Model<Book>) {}
 
   async getAll(): Promise<Model<Book>[]> {
-    return this.bookModel.find();
+    return this.bookModel.find().populate('genre');
   }
 
   getById(bookId: string): Promise<Model<Book>> {
-    const found = this.bookModel.findById(bookId);
+    const found = this.bookModel.findById(bookId).populate('genre');
 
     if (!found) {
       throw new NotFoundException(`Book with ID ${bookId} was not found.`);
